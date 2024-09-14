@@ -12,7 +12,7 @@ public class RestMethodController {
 
     @PostMapping("")
     public String postUsers(){
-        return"Post Method controller";
+        return"성준이의 스프링부트 Post Method controller";
     }
 
     @GetMapping("/{userId}")
