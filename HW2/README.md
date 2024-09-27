@@ -37,9 +37,12 @@ Map을 통해서 전체 데이터를 확인해보니!!!
 
 수정이 완료되었다!!
 
-<img width="871" alt="스크린샷 2024-09-27 오후 4 49 43" src="https://github.com/user-attachments/assets/2d6f922b-8e33-41fa-8a95-ca1460ab3053">
 삭제에도 입력하니
+
+<img width="871" alt="스크린샷 2024-09-27 오후 4 49 43" src="https://github.com/user-attachments/assets/2d6f922b-8e33-41fa-8a95-ca1460ab3053">
+
 <img width="871" alt="스크린샷 2024-09-27 오후 4 51 03" src="https://github.com/user-attachments/assets/3aeeeb60-62e8-4a23-996e-c984196bb0c4">
+
 ENFJ가 사라지고 INTJ만 남아버리게 되었다.!!
 
 모든 기능 구현 완료
