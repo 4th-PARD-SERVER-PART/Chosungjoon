@@ -30,6 +30,7 @@ Map을 통해서 전체 데이터를 확인해보니!!!
 남은 것은 수정과 삭제 기능이다.!
 
 <img width="871" alt="스크린샷 2024-09-27 오후 4 48 58" src="https://github.com/user-attachments/assets/c673b3ad-f062-4d9c-b8f4-2dfb01d6eb99">
+
 이렇게 댕댕이가 아닌 까칠이로 수정을 하니
 
 <img width="871" alt="스크린샷 2024-09-27 오후 4 49 22" src="https://github.com/user-attachments/assets/c7d0ee69-904b-46ef-a818-936d66ca642d">
