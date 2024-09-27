@@ -24,5 +24,15 @@ public class Mbtirepository {
     public Map<String,Mbti> findAll(){
         return mbtiList;
     }
+    public void update(String mbti_type,Mbtidto mbtidto){
+        Mbti mbti=mbtiList.get(mbti_type);
+        mbti.setMbti_type(mbtidto.getMbti_type());
+        mbti.setMbti_nick(mbtidto.getMbti_nick());
+        mbtiList.put(mbti_type,mbti);
+    }
+
+    public void delete(String mbti_type){
+        mbtiList.remove(mbti_type);
+    }
 
 }

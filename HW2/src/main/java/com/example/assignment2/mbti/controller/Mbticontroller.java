@@ -27,4 +27,13 @@ public class Mbticontroller {
     public Map<String,Mbti>findAll(){
         return mbtiservice.findAll();
     }
+    @PatchMapping("/{mbti}")
+    public void updateMbti(@PathVariable String mbti ,@RequestBody Mbtidto mbtidto){
+        mbtiservice.update(mbtidto);
+    }
+    @DeleteMapping("/{mbti}")
+    public void deleteMbti(@PathVariable String mbti){
+        mbtiservice.delete(mbti);
+    }
+
 }

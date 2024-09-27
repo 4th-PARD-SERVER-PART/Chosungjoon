@@ -5,6 +5,7 @@ import com.example.assignment2.mbti.entity.Mbti;
 import com.example.assignment2.mbti.repository.Mbtirepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 import java.util.Map;
@@ -22,5 +23,11 @@ public class Mbtiservice {
     }
     public Map<String,Mbti> findAll() {
         return mbtirepository.findAll();
+    }
+    public void update(Mbtidto mbtidto) {
+        mbtirepository.save(mbtidto);
+    }
+    public void delete(String mbti_type){
+        mbtirepository.delete(mbti_type);
     }
 }
