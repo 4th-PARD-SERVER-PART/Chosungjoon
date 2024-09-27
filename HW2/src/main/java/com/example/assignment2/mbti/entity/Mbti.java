@@ -6,9 +6,11 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Setter
+
 public class Mbti {
+    @Setter
     private String mbti_type;
+    @Setter
     private String mbti_nick;
 
 
