@@ -4,15 +4,15 @@ import com.example.hw3.domain.BurgerKing;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.time.LocalDateTime;
+import java.util.List;
+
 
 @Repository
-public interface BurgerKingRepository extends JpaRepository<BurgerKing, Integer> {
+public interface BurgerKingRepository extends JpaRepository<BurgerKing, Long> {
 
-    BurgerKing findByPrice(Integer price);
+    BurgerKing findByPrice(int price);
     BurgerKing findByName(String name);
-    BurgerKing findTopByOrderByCreateTimeDesc();
-
+    List<BurgerKing> findAllByOrderByCreateTimeDesc();
 
 
 }

@@ -15,7 +15,7 @@ public class BurgerKingService {
 
     private final BurgerKingRepository burgerKingRepository;
 
-    public void save(@RequestBody BurgerKingDto burgerKingDto){
+    public void save(BurgerKingDto burgerKingDto){
         BurgerKing burgerKing = BurgerKing.builder().name(burgerKingDto.getName()).price(burgerKingDto.getPrice()).build();
         burgerKingRepository.save(burgerKing);
     }
@@ -27,22 +27,21 @@ public class BurgerKingService {
         BurgerKing burgerKing=burgerKingRepository.findByName(name);
         return burgerKing.getName();
     }
-    public void update(Integer id,BurgerKingDto burgerKingDto){
+    public void update(Long id,BurgerKingDto burgerKingDto){
         BurgerKing burgerKing = burgerKingRepository.findById(id).get();
         burgerKing.setPrice(burgerKingDto.getPrice());
         burgerKing.setName(burgerKingDto.getName());
         burgerKingRepository.save(burgerKing);
     }
-    public void delete(Integer id){
+    public void delete(Long id){
         burgerKingRepository.deleteById(id);
     }
     public List<BurgerKing> readAll(){
-        List<BurgerKing>burgerKingList=burgerKingRepository.findAll();
-        return burgerKingList;
+        return burgerKingRepository.findAll();
     }
-    public BurgerKing findTopByCreateTime(){
-        BurgerKing burgerking=burgerKingRepository.findTopByOrderByCreateTimeDesc();
-        return burgerking;
+    public List<BurgerKing> findAllByOrderByCreateTimeDesc(){
+        return  burgerKingRepository.findAllByOrderByCreateTimeDesc();
+
 
     }
 
