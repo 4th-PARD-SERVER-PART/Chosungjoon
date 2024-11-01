@@ -13,15 +13,26 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class SecurityConfig {
+
     private final PrincipalOauth2UserService principalOauth2UserService;
     private final CorsConfig coresConfig;
 
     @Bean
-    public SecurityFilterChain FilterChain(HttpSecurity http, CorsConfig corsConfig) throws Exception {
-        http.csrf(AbstractHttpConfigurer::disable);
-        http.addFilter(corsConfig.corsFilter());
-        http.authorizeHttpRequests(au->au.anyRequest().permitAll());
-        http.oauth2Login(oauth -> oauth.loginPage("/loginForm").defaultSuccessUrl("/home").userInfoEndpoint(userInfo->userInfo.userService(principalOauth2UserService)));
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http.csrf(AbstractHttpConfigurer::disable); // CSRF 비활성화
+        http.addFilter(coresConfig.corsFilter()); // CORS 필터 추가
+
+        // 모든 요청 허용 설정
+        http.authorizeHttpRequests(authorize ->
+                authorize.anyRequest().permitAll());
+
+        // OAuth2 로그인 설정
+        http.oauth2Login(oauth ->
+                oauth.loginPage("/loginForm") // 사용자 정의 로그인 페이지
+                        .defaultSuccessUrl("/home") // 로그인 성공 시 리디렉션 경로
+                        .userInfoEndpoint(userInfo ->
+                                userInfo.userService(principalOauth2UserService))); // 사용자 서비스 설정
+
         return http.build();
     }
 }

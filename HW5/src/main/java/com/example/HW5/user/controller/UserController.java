@@ -15,17 +15,13 @@ import java.util.List;
 public class UserController {
     private final UserService userService;
 
-    @PostMapping
-    public void createUser(@RequestBody UserDto.createReq userReq) {
-        userService.createUser(userReq);
+    @GetMapping("detail/{email}")
+    public UserDto.detailRes detailUser(@PathVariable String email) {
+        return userService.detail(email);
     }
-    @GetMapping("detail/{userId}")
-    public UserDto.detailRes detailUser(@PathVariable Long userId) {
-        return userService.detail(userId);
-    }
-    @GetMapping("list/{userId}")
-    public List<PostDto.createReq> list(@PathVariable Long userId){
-        return userService.list(userId);
+    @GetMapping("list/{Email}")
+    public List<PostDto.createReq> list(@PathVariable String Email){
+        return userService.list(Email);
     }
 
     

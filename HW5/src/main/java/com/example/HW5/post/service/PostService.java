@@ -17,10 +17,9 @@ public class PostService {
     private final PostRepository postRepository;
     private final UserRepository userRepository;
 
-    public void createPost(Long userId, PostDto.createReq req){
-        Optional<User> users=userRepository.findById(userId);
-        User user=users.get();
-        Post post=Post.toEntity(req.getTitle(),req.getContent(),user);
+    public void createPost(String email, PostDto.createReq req){
+        User users=userRepository.findByEmail(email);
+        Post post=Post.toEntity(req.getTitle(),req.getContent(),users);
         postRepository.save(post);
     }
 
@@ -29,21 +28,20 @@ public class PostService {
         Post post=posts.get();
             return new PostDto.createRes(postId,post.getTitle(), post.getContent());
     }
-    public void updatePost(Long userId,PostDto.updateReq req){
+    public void updatePost(String email,PostDto.updateReq req){
         Optional<Post> posts=postRepository.findById(req.getPostId());
         Post post=posts.get();
-        if(post.getUser().getId().equals(userId)){
+        if(post.getUser().getEmail().equals(email)){
         post.setTitle(req.getTitle());
         post.setContent(req.getContent());
         postRepository.save(post);
         }
     }
-    public void deletePost(Long userId,PostDto.deleteReq req){
-        Optional<User> users=userRepository.findById(userId);
-        User user=users.get();
+    public void deletePost(String email,PostDto.deleteReq req){
+        User users=userRepository.findByEmail(email);
         Optional<Post> posts=postRepository.findById(req.getPostId());
         Post post=posts.get();
-        if(post.getUser().getId().equals(user.getId())) {
+        if(post.getUser().getEmail().equals(users.getEmail())) {
             postRepository.delete(post);
         }
     }

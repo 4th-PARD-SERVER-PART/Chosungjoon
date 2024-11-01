@@ -18,23 +18,18 @@ public class UserService {
     private final PostRepository postRepository;
 
 
-    public void createUser(UserDto.createReq userReq){
-        User user=new User();
-        user.setEmail(userReq.getEmail());
-        userRepository.save(user);
-    }
-    public UserDto.detailRes detail(Long userId){
-        User user=userRepository.findById(userId).orElse(null);
+    public UserDto.detailRes detail(String Email){
+        User user=userRepository.findByEmail(Email);
         UserDto.detailRes detailRes=new UserDto.detailRes();
         detailRes.setEmail(user.getEmail());
         detailRes.setPosts(PostDto.createRes.postList(user.getPost()));
         return detailRes;
     }
-    public List<PostDto.createReq> list(Long userId){
-        User user=userRepository.findById(userId).orElse(null);
+    public List<PostDto.createReq> list(String Email){
+        User user=userRepository.findByEmail(Email);
         List<PostDto.createReq> posts=new ArrayList<>();
         if(user!=null){
-            List<Post> userPosts = postRepository.findByUserId(userId);
+            List<Post> userPosts = postRepository.findByUser_Email(Email);
             for (Post post : userPosts) {
                 PostDto.createReq detail= new PostDto.createReq();
                 detail.setTitle(post.getTitle());

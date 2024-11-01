@@ -11,21 +11,22 @@ import org.springframework.web.bind.annotation.*;
 public class PostController {
     private final PostService postService;
 
-    @PostMapping("create/{userId}")
-    public void createPost(@PathVariable Long userId ,@RequestBody PostDto.createReq request) {
-        postService.createPost(userId,request);
+    @PostMapping("create/{email}")
+    public void createPost(@PathVariable String email,@RequestBody PostDto.createReq request) {
+        postService.createPost(email,request);
     }
     @GetMapping("/detail/{postId}")
-    PostDto.createRes detailPost(Long postId){
+    PostDto.createRes detailPost(long postId){
         return postService.detailPost(postId);
     }
-    @PatchMapping("update/{userId}")
-    public void updatePost(@PathVariable Long userId,@RequestBody PostDto.updateReq request){
-        postService.updatePost(userId,request);
+
+    @PatchMapping("update/{email}")
+    public void updatePost(@PathVariable String email,@RequestBody PostDto.updateReq request){
+        postService.updatePost(email,request);
     }
-    @DeleteMapping("/delete/{userId}")
-    public void deletePost(@PathVariable Long userId,@RequestBody PostDto.deleteReq request){
-        postService.deletePost(userId,request);
+    @DeleteMapping("/delete/{email}")
+    public void deletePost(@PathVariable String email,@RequestBody PostDto.deleteReq request){
+        postService.deletePost(email,request);
     }
 
 }

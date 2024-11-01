@@ -23,7 +23,7 @@ public class Post {
     private String content;
 
     @ManyToOne
-    @JoinColumn(name="user_id")
+    @JoinColumn(name = "user_email", referencedColumnName = "email")
     private User user;
 
     public static Post toEntity(String title,String content,User user) {
