@@ -1,14 +1,10 @@
 package com.example.hw04.post.controller;
 
 import com.example.hw04.post.dto.PostDto;
-import com.example.hw04.post.entity.Post;
 import com.example.hw04.post.service.PostService;
-import com.example.hw04.user.service.UserService;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @RestController
 @RequestMapping("/post")
@@ -21,7 +17,7 @@ public class PostController {
         postService.createPost(userId,request);
     }
     @GetMapping("/detail/{postId}")
-    PostDto.createRes detailPost(Long postId){
+    PostDto.createRes detailPost(@PathVariable Long postId){
         return postService.detailPost(postId);
     }
     @PatchMapping("update/{userId}")
